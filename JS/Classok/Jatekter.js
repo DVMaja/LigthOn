@@ -2,34 +2,50 @@ import Lampa from "./Lampa.js";
 
 class Jatekter {
     #db; // int felkapcsolt lámpák száma
-    #allapotLISTA = []; 
-    #meret = 6  ; // int játéktér mérete, lámpák száma, meret*meret
+    #allapotLISTA = []; //[false, false, false, false, false, false, false, false, false,]; 
+    #meret = 9; // int játéktér mérete, lámpák száma, meret*meret
     #lepes; // int
 
-    constructor(){
+    constructor() {
         const szuloELEM = $("article .ideJatekter");
-        
-        console.log("Jatekter.js elérhető");
+
+        //console.log("Jatekter.js elérhető");
         for (let szamlalo = 0; szamlalo < this.#meret; szamlalo++) {
-            new Lampa(szamlalo, false, szuloELEM);
-            
+            new Lampa(szamlalo, this.#allapotLISTA[szamlalo], szuloELEM);
+
         }
 
     }
 
-    #setAllapotLISTA(){
+    #setAllapotLISTA() {
+        this.#allapotLISTA.length = this.#meret * this.#meret;
+        for (let index = 0; index < this.#allapotLISTA.length; index++) {
+            let esely = Math.floor((Math.random() * 4) + 1);
+            if (esely = 1) {
+                this.#allapotLISTA[index] = true;
+                //Lampa.setAllapot();
+            } else {
+                this.#allapotLISTA[index] = false;
+                //itt van lekapcsolva
+                //Lampa.setAllapot();
+            }
+            console.log(this.#allapotLISTA[index]);
+
+        }
+        return this.#allapotLISTA;
+    }
+
+    #szomszedokKeresese(id) {
+
 
     }
 
-    #szomszedokKeresese(id){
-
-    }
-
-    #init(){
+    #init() {
         //új játéktér
+
     }
 
-    #ellenorzes(){
+    #ellenorzes() {
         //megnézi hogy hány lámpa ég még
     }
 }

@@ -7,11 +7,11 @@ class Lampa {
         this.#id = id;
         this.#allapot = allapot;
         szuloELEM.append(`<div class="korELEM"><span class="dot"></span></div>`);
-        console.log("Lampa.js elérhető");
+        //console.log("Lampa.js elérhető");
 
         this.korELEM = $("ideJatekter .korELEM:last-child p");
 
-        this.korELEM.on("click", ()=>{
+        this.korELEM.on("click", () => {
             this.#kattintasTrigger;
         })
     }
@@ -19,12 +19,12 @@ class Lampa {
         if (zold) {
             //sárgára állítja át
             this.#szinBeallit();
-        }else if(sarga){
+        } else if (sarga) {
             this.#szinBeallit();
             //zöldre állítja át
 
         }
-        
+
     }
     #szinBeallit() {
 
