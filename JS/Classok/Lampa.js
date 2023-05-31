@@ -3,17 +3,20 @@ class Lampa {
     #id; // int lámpa sorszáma
     #divELEM // html elem
 
-    constructor(id, allapot, szuloELEM){
+    constructor(id, allapot, szuloELEM) {
+        this.#id = id;
+        this.#allapot = allapot;
+        szuloELEM.append(`<div class="korELEM"></div>`);
         console.log("Lampa.js elérhető");
 
     }
-    setAllapot(){
+    setAllapot() {
         this.#szinBeallit();
     }
-    #szinBeallit(){
+    #szinBeallit() {
 
     }
-    #kattintasTrigger(){
+    #kattintasTrigger() {
         const esemeny = new CustomEvent("kapcsolas", { detail: this });
         window.dispatchEvent(esemeny);
     }

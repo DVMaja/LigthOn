@@ -3,12 +3,17 @@ import Lampa from "./Lampa.js";
 class Jatekter {
     #db; // int felkapcsolt lámpák száma
     #allapotLISTA = []; 
-    #meret; // int játéktér mérete, lámpák száma, meret*meret
+    #meret = 6  ; // int játéktér mérete, lámpák száma, meret*meret
     #lepes; // int
 
     constructor(){
-        new Lampa();
+        const szuloELEM = $("article .ideJatekter");
+        
         console.log("Jatekter.js elérhető");
+        for (let szamlalo = 0; szamlalo < this.#meret; szamlalo++) {
+            new Lampa(szamlalo, false, szuloELEM);
+            
+        }
 
     }
 
