@@ -6,7 +6,7 @@ class Lampa {
     constructor(id, allapot, szuloELEM) {
         this.#id = id;
         this.#allapot = allapot;
-        szuloELEM.append(`<div class="korELEM"></div>`);
+        szuloELEM.append(`<div class="korELEM"><span class="dot"></span></div>`);
         console.log("Lampa.js elérhető");
 
         this.korELEM = $("ideJatekter .korELEM:last-child p");
