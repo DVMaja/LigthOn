@@ -14,13 +14,13 @@ class Lampa {
             this.#kattintasTrigger();
         })
         this.setAllapot(this.#allapot);
-
     }
+
     setAllapot(aktAllapot) {
         this.#allapot = aktAllapot;
         this.#szinBeallit();
-
     }
+
     #szinBeallit() {
         if (this.#allapot == true) {
             this.korELEM.css(`background-color`, `darkgreen`);
@@ -29,7 +29,6 @@ class Lampa {
         } else {
             this.korELEM.css(`background-color`, `orange`);
             this.allapot = false;
-
         }
     }
 
