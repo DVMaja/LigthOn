@@ -28,9 +28,7 @@ class Jatekter {
             this.#setAllapotLISTA(event.detail);
             this.#ellenorzes();
         })
-        
-
-        
+        //this.#szomszedokKeresese();
     }
 
     #setAllapotLISTA(lampa) {
@@ -44,20 +42,22 @@ class Jatekter {
             this.#db++;
             console.log("db: " + this.#db);
         } else {
-            aktAllapot = false;            
+            aktAllapot = false;
             //console.log("db: " + this.#db);
             lampa.setAllapot(aktAllapot);
         }
     }
 
     #szomszedokKeresese(id) {
+        // meg kell keresni a szomszédjait, a Lámmpa osztáyl segítségével
+
     }
 
     #init(lampa) {
         //console.log(this.#allapotLISTA);
-        let aktAllapot;        
+        let aktAllapot;
         let esely = Math.floor((Math.random() * 4) + 1);
-        
+
         if (esely == 1) {
             aktAllapot = true;
             //console.log(lampa);
@@ -70,16 +70,15 @@ class Jatekter {
             aktAllapot = false;
             lampa.setAllapot(aktAllapot);
         }
-        
+
     }
 
-    #ellenorzes() {     
+    #ellenorzes() {
         const eredmeny = $(".leLampaSzamlalo");
-        
         this.#allapotLISTA.length;
 
         console.log(this.#db);
-        eredmeny.empty();   
+        eredmeny.empty();
         eredmeny.append(`<p>${this.#db}</p>`);
 
     }
