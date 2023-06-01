@@ -14,11 +14,12 @@ class Jatekter {
         for (let szamlalo = 0; szamlalo < this.#meret; szamlalo++) {
             const lampa = new Lampa(szamlalo, this.#allapotLISTA[szamlalo], szuloELEM);
             this.#allapotLISTA.push(lampa);
+            this.#init(lampa, szamlalo);
         }
         console.log(this.#allapotLISTA);
-        
 
-        
+
+
         $(window).on("kapcsolas", (event) => {
             console.log(event.detail);
             this.#setAllapotLISTA(event.detail);
@@ -45,24 +46,24 @@ class Jatekter {
     #szomszedokKeresese(id) {
     }
 
-    #init(lampa) {        
+    #init(lampa, szamlalo) {
         //console.log(this.#allapotLISTA);
         let aktAllapot;
 
-        for (let index = 0; index < this.#meret; index++) {
-            let esely = Math.floor((Math.random() * 4) + 1);
-            //alapállapot
-            if (esely == 1) {
-                aktAllapot = true;
-                //console.log(lampa);
-                this.#allapotLISTA[index].allapot = aktAllapot;
-                
-                console.log(aktAllapot);
-            } else {
-                aktAllapot = false;
-                this.#allapotLISTA[index].allapot = aktAllapot;
-            }
+        //for (let index = 0; index < this.#meret; index++) {
+        let esely = Math.floor((Math.random() * 4) + 1);
+        //alapállapot
+        if (esely == 1) {
+            aktAllapot = true;
+            //console.log(lampa);
+            lampa.setAllapot(aktAllapot);
+
+            console.log(aktAllapot);
+        } else {
+            aktAllapot = false;
+            lampa.setAllapot(aktAllapot);
         }
+        //}
     }
 
     #ellenorzes() {
