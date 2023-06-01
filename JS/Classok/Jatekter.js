@@ -2,7 +2,7 @@ import Lampa from "./Lampa.js";
 
 class Jatekter {
     #db; // int felkapcsolt lámpák száma
-    #allapotLISTA = [false, false, false, false, false, false, false, false, false]; //[false, false, false, false, false, false, false, false, false,]; 
+    #allapotLISTA = []; //[false, false, false, false, false, false, false, false, false,]; 
     #meret = 3; // int játéktér mérete, lámpák száma, meret*meret
     #lepes; // int
 
@@ -13,10 +13,17 @@ class Jatekter {
 
         //console.log("Jatekter.js elérhető");
         for (let szamlalo = 0; szamlalo < jatekterNagysaga; szamlalo++) {
-            new Lampa(szamlalo, this.#allapotLISTA[szamlalo], szuloELEM);
+            const lampa = new Lampa(szamlalo, this.#allapotLISTA[szamlalo], szuloELEM);
+            this.#allapotLISTA.push(lampa);
 
         }
-        this.#setAllapotLISTA();
+        //this.#setAllapotLISTA(lampa);
+
+        $(window).on("kapcsolas", (event) => {
+            this.#setAllapotLISTA();
+
+        })
+
 
     }
 
@@ -27,18 +34,17 @@ class Jatekter {
         let aktAllapot;
         for (let index = 0; index < this.#allapotLISTA.length; index++) {
             let esely = Math.floor((Math.random() * 4) + 1);
-            //console.log(esely);
+
 
             if (esely == 1) {
-                aktAllapot = this.#allapotLISTA[index] = true;
+                aktAllapot = true;
                 //console.log("igaz ág:" + aktAllapot);
-                //Lampa().setAllapot(aktAllapot);
+                lampa.setAllapot(aktAllapot);
             } else {
-                aktAllapot = this.#allapotLISTA[index] = false;
+                aktAllapot = false;
                 //console.log("hamis ág:" + aktAllapot);
-                //Lampa().setAllapot(aktAllapot);
+                lampa.setAllapot(aktAllapot);
             }
-            //console.log(this.#allapotLISTA[index]);
 
         }
         //return this.#allapotLISTA;

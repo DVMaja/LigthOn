@@ -1,48 +1,47 @@
 class Lampa {
-    #allapot;//boolean fel le kapcsolt e zold vagy sarga
-    #id; // int lámpa sorszáma
-    #divELEM // html elem
+    #allapot = false;
+    #id;
+    #divELEM;
 
     constructor(id, allapot, szuloELEM) {
         this.#id = id;
         this.#allapot = allapot;
-        szuloELEM.append(`<div class="korELEM"></span></div>`);
+        szuloELEM.append(`<div class="korELEM"></div>`);
         //console.log("Lampa.js elérhető");
 
         this.korELEM = $("ideJatekter .korELEM:last-child p");
 
         this.korELEM.on("click", () => {
-            this.#kattintasTrigger;
+            this.#kattintasTrigger();
         })
         this.setAllapot();
     }
-    setAllapot() {   
+    setAllapot() {
 
-        if (this.#allapot == true) {
-            console.log("látszik az igaz álítás!");  
-            this.#allapot = false; 
+        if (this.#allapot) {
+            console.log("látszik az igaz álítás!");
+            this.#allapot = false;
             this.#szinBeallit();
             let ki = this.#szinBeallit();
-            console.log(ki);            
-            
+            console.log(ki);
 
-        } else if (this.#allapot == false) {
+
+        } else if (!this.#allapot) {
             console.log("látszik a hamis álítás!");
             this.#allapot = false;
             this.#szinBeallit();
             let ki = this.#szinBeallit();
-            console.log(ki);          
-        }        
-        
+            console.log(ki);
+        }
+
 
     }
     #szinBeallit() {
-        if (true) {
-            return $("korELEM").css(`background-color`, `darkgreen`);  
+        if (this.#allapot == true) {
+            return $(".korELEM").css(`background-color`, `darkgreen`);
 
-        } else if (false) {
-            
-            return $("korELEM").css(`background-color`, `orange`); 
+        } else if (!this.#allapot) {
+            return $(".korELEM").css(`background-color`, `orange`);
         }
 
         //return this.korELEM.css(`background-color`, szin);
