@@ -36,6 +36,10 @@ class Lampa {
         console.log(this.#allapot);
         return this.#allapot;
     }
+    
+    getId() {
+        return this.#id;
+    }
 
     #kattintasTrigger() {
         console.log("A trigger megy")
