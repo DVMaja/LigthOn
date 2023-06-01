@@ -16,24 +16,36 @@ class Lampa {
         })
         this.setAllapot();
     }
-    setAllapot() {
-        if (false) {
-            //this.korELEM.css(`background-color`, `orange`);
+    setAllapot() {   
+
+        if (this.#allapot == true) {
+            console.log("látszik az igaz álítás!");  
+            this.#allapot = false; 
+            this.#szinBeallit();
+            let ki = this.#szinBeallit();
+            console.log(ki);            
+            
+
+        } else if (this.#allapot == false) {
             console.log("látszik a hamis álítás!");
-            this.#szinBeallit("orange");
-            console.log(this.#szinBeallit);
-        } else if (true) {
-            //this.korELEM.css(`background-color`, `darkgreen`);  
-            let beallitandoSzin = "darkgreen";
-            this.#szinBeallit(beallitandoSzin);
-            console.log("látszik az igaz álítás!");
-            console.log(this.#szinBeallit);
-        }
+            this.#allapot = false;
+            this.#szinBeallit();
+            let ki = this.#szinBeallit();
+            console.log(ki);          
+        }        
+        
 
     }
-    #szinBeallit(szin) {    
-        //meg nem éri el a megadott szint    
-        return this.korELEM.css(`background-color`, szin);
+    #szinBeallit() {
+        if (true) {
+            return $("korELEM").css(`background-color`, `darkgreen`);  
+
+        } else if (false) {
+            
+            return $("korELEM").css(`background-color`, `orange`); 
+        }
+
+        //return this.korELEM.css(`background-color`, szin);
 
     }
     #kattintasTrigger() {
