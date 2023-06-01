@@ -7,7 +7,9 @@ class Jatekter {
     #lepes; // int
 
     constructor() {
+        this.#lepes = 0;
         const szuloELEM = $("article .ideJatekter");
+        
 
 
         //console.log("Jatekter.js elérhető");
@@ -17,7 +19,7 @@ class Jatekter {
             this.#init(lampa, szamlalo);
         }
         console.log(this.#allapotLISTA);
-
+        this.#db = 4;
 
 
         $(window).on("kapcsolas", (event) => {
@@ -26,7 +28,9 @@ class Jatekter {
 
             //console.log("RÁ LEHET KATTINTANI");
             this.#lepes++;
+            console.log(this.#lepes);
         })
+        this.#ellenorzes();
     }
 
     #setAllapotLISTA(lampa) {
@@ -67,7 +71,9 @@ class Jatekter {
     }
 
     #ellenorzes() {
-        //megnézi hogy hány lámpa ég még
+        //számláld meg a zöld lámpákat
+        this.#db = 0;
+        
     }
 }
 export default Jatekter;
