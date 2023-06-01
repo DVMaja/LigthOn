@@ -7,47 +7,39 @@ class Lampa {
         this.#id = id;
         this.#allapot = allapot;
         szuloELEM.append(`<div class="korELEM"></div>`);
-        //console.log("Lampa.js elérhető");
-
-        this.korELEM = $("ideJatekter .korELEM:last-child p");
+       
+        this.korELEM = $(".ideJatekter .korELEM:last-child");
+        //console.log(this.korELEM);
 
         this.korELEM.on("click", () => {
+            console.log("A kattintást érzékeli")
             this.#kattintasTrigger();
         })
-        this.setAllapot();
+        this.setAllapot(this.#allapot);
     }
-    setAllapot() {
-
-        if (this.#allapot) {
-            console.log("látszik az igaz álítás!");
-            this.#allapot = false;
-            this.#szinBeallit();
-            let ki = this.#szinBeallit();
-            console.log(ki);
-
-
-        } else if (!this.#allapot) {
-            console.log("látszik a hamis álítás!");
-            this.#allapot = false;
-            this.#szinBeallit();
-            let ki = this.#szinBeallit();
-            console.log(ki);
-        }
-
+    setAllapot(aktAllapot) {
+        this.#allapot = aktAllapot;
+       this.#szinBeallit();
 
     }
     #szinBeallit() {
         if (this.#allapot == true) {
-            return $(".korELEM").css(`background-color`, `darkgreen`);
+            this.korELEM.css(`background-color`, `darkgreen`);
+            this.#allapot = true;
+            //console.log("igaz ágba bemegy");
 
-        } else if (!this.#allapot) {
-            return $(".korELEM").css(`background-color`, `orange`);
+        } else {
+            //console.log("hamis ágba bemegy");
+            this.korELEM.css(`background-color`, `orange`);
+            this.allapot = false;
+
         }
 
         //return this.korELEM.css(`background-color`, szin);
 
     }
     #kattintasTrigger() {
+        console.log("A trigger megy")
         const esemeny = new CustomEvent("kapcsolas", { detail: this });
         window.dispatchEvent(esemeny);
     }

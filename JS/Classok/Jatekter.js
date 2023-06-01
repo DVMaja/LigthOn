@@ -3,46 +3,48 @@ import Lampa from "./Lampa.js";
 class Jatekter {
     #db; // int felkapcsolt lámpák száma
     #allapotLISTA = []; //[false, false, false, false, false, false, false, false, false,]; 
-    #meret = 3; // int játéktér mérete, lámpák száma, meret*meret
+    #meret = 9; // int játéktér mérete, lámpák száma, meret*meret
     #lepes; // int
 
     constructor() {
         const szuloELEM = $("article .ideJatekter");
-        let jatekterNagysaga = this.#meret * this.#meret;
+        //let jatekterNagysaga = this.#meret * this.#meret;
 
 
         //console.log("Jatekter.js elérhető");
-        for (let szamlalo = 0; szamlalo < jatekterNagysaga; szamlalo++) {
+        for (let szamlalo = 0; szamlalo < this.#meret; szamlalo++) {
             const lampa = new Lampa(szamlalo, this.#allapotLISTA[szamlalo], szuloELEM);
             this.#allapotLISTA.push(lampa);
+            
 
         }
+        //console.log(this.#allapotLISTA);
         //this.#setAllapotLISTA(lampa);
 
         $(window).on("kapcsolas", (event) => {
-            this.#setAllapotLISTA();
-
+            this.#setAllapotLISTA(event.detail);
+            console.log("RÁ LEHET KATTINTANI");
         })
-
-
     }
 
-    #setAllapotLISTA() {
+    #setAllapotLISTA(lampa) {
         this.#allapotLISTA.length = this.#meret * this.#meret;
         //console.log("this.#allapotLISTA hossza: " + this.#allapotLISTA.length);
+        //console.log(lampa);
 
         let aktAllapot;
-        for (let index = 0; index < this.#allapotLISTA.length; index++) {
+        for (let index = 0; index < this.#meret; index++) {
             let esely = Math.floor((Math.random() * 4) + 1);
 
 
             if (esely == 1) {
                 aktAllapot = true;
-                //console.log("igaz ág:" + aktAllapot);
+                
+                //console.log(lampa);
                 lampa.setAllapot(aktAllapot);
             } else {
                 aktAllapot = false;
-                //console.log("hamis ág:" + aktAllapot);
+                
                 lampa.setAllapot(aktAllapot);
             }
 
