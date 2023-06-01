@@ -7,6 +7,8 @@ $(function () {
 
     gombELEM.on("click", () => {
         console.log("Rá lehet kattintani a gombra");
-        //ezzel folytat
+        const torlendo = $(".ideJatekter");
+        torlendo.empty();
+        new Jatekter();
     })
 })
