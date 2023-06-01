@@ -7,7 +7,7 @@ class Lampa {
         this.#id = id;
         this.#allapot = allapot;
         szuloELEM.append(`<div class="korELEM"></div>`);
-       
+
         this.korELEM = $(".ideJatekter .korELEM:last-child");
         //console.log(this.korELEM);
 
@@ -16,10 +16,11 @@ class Lampa {
             this.#kattintasTrigger();
         })
         this.setAllapot(this.#allapot);
+        
     }
     setAllapot(aktAllapot) {
         this.#allapot = aktAllapot;
-       this.#szinBeallit();
+        this.#szinBeallit();
 
     }
     #szinBeallit() {
@@ -38,6 +39,12 @@ class Lampa {
         //return this.korELEM.css(`background-color`, szin);
 
     }
+
+    getAllapot() {
+        console.log(this.#allapot);
+        return this.#allapot;
+    }
+
     #kattintasTrigger() {
         console.log("A trigger megy")
         const esemeny = new CustomEvent("kapcsolas", { detail: this });
