@@ -18,6 +18,7 @@ class Jatekter {
             const lampa = new Lampa(szamlalo, this.#allapotLISTA[szamlalo], szuloELEM);
             this.#allapotLISTA.push(lampa);
             this.#init(lampa);
+           
         }
         /* console.log("1. lista: ");
         console.log(this.#allapotLISTA); */
@@ -29,6 +30,7 @@ class Jatekter {
             this.#allapotLISTA[event.detail] = true;
             console.log(this.#allapotLISTA[event.detail]);
             this.#setAllapotLISTA(event.detail);
+            this.#szomszedokKeresese(event.detail);
             this.#ellenorzes();
         })
         //this.#szomszedokKeresese();
@@ -53,6 +55,10 @@ class Jatekter {
 
     #szomszedokKeresese(id) {
         // meg kell keresni a szomszédjait, a Lámmpa osztáyl segítségével
+        id.getId();
+        console.log(id.getId());
+        
+
 
     }
 
