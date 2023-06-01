@@ -3,21 +3,24 @@ import Lampa from "./Lampa.js";
 class Jatekter {
     #db;
     #allapotLISTA = [];
-    #meret = 9;
+    #meret;
     #lepes;
+    #jatekterMerete;
 
     constructor() {
         this.#lepes = 0;
+        this.#meret  = 3;
         this.#db = 0;
         const szuloELEM = $("article .ideJatekter");
+        this.#jatekterMerete = this.#meret *this.#meret;
 
-        for (let szamlalo = 0; szamlalo < this.#meret; szamlalo++) {
+        for (let szamlalo = 0; szamlalo < this.#jatekterMerete; szamlalo++) {
             const lampa = new Lampa(szamlalo, this.#allapotLISTA[szamlalo], szuloELEM);
             this.#allapotLISTA.push(lampa);
             this.#init(lampa);
         }
-        console.log("1. lista: ");
-        console.log(this.#allapotLISTA);
+        /* console.log("1. lista: ");
+        console.log(this.#allapotLISTA); */
         this.#db;
 
         this.#ellenorzes();
@@ -63,9 +66,9 @@ class Jatekter {
             //console.log(lampa);
             lampa.setAllapot(aktAllapot);
             this.#db++;
-            console.log("69.sor db: " + this.#db);
+            //console.log("69.sor db: " + this.#db);
 
-            console.log(aktAllapot);
+            //console.log(aktAllapot);
         } else {
             aktAllapot = false;
             lampa.setAllapot(aktAllapot);
@@ -75,11 +78,14 @@ class Jatekter {
 
     #ellenorzes() {
         const eredmeny = $(".leLampaSzamlalo");
-        this.#allapotLISTA.length;
+        const listaMerete = this.#allapotLISTA.length;
 
-        console.log(this.#db);
+        //console.log(this.#db);
         eredmeny.empty();
         eredmeny.append(`<p>${this.#db}</p>`);
+        if (this.#db == listaMerete) {
+            eredmeny.append(`<p>Hurrá, meghosszabítottad a Föld életét!</p>`);
+        }
 
     }
 }
