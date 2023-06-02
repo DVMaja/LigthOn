@@ -28,9 +28,9 @@ class Jatekter {
         $(window).on("kapcsolas", (event) => {
             console.log(event.detail);
             this.#allapotLISTA[event.detail] = true;
-            console.log(this.#allapotLISTA[event.detail]);
+            //console.log(this.#allapotLISTA[event.detail]);
             this.#setAllapotLISTA(event.detail);
-            this.#szomszedokKeresese(event.detail);
+            //this.#szomszedokKeresese(event.detail);
             this.#ellenorzes();
         })
         //this.#szomszedokKeresese();
@@ -45,9 +45,10 @@ class Jatekter {
             //console.log(lampa);
             lampa.setAllapot(aktAllapot);
             this.#db++;
-            console.log("db: " + this.#db);
+            
         } else {
             aktAllapot = false;
+            this.#db--;
             //console.log("db: " + this.#db);
             lampa.setAllapot(aktAllapot);
         }
@@ -55,11 +56,28 @@ class Jatekter {
 
     #szomszedokKeresese(id) {
         // meg kell keresni a szomszédjait, a Lámmpa osztáyl segítségével
-        id.getId();
-        console.log(id.getId());
+        console.log(id);
         
+        let kattintottElem = id.getId();
+        console.log(id.getId());
+       
+        
+        const korulElemLista = [kattintottElem + 1, kattintottElem - 1, kattintottElem + 3, kattintottElem - 3];
+        //console.log(korulElemLista[0].getAllapot());
+        console.log(korulElemLista);
 
+        for (let db = 0; db < korulElemLista.length; db++) {
+            let esely = Math.floor((Math.random() * 10) + 1);
+            console.log(korulElemLista[db]);
+            console.log(id.getId(korulElemLista[db]));
+            //console.log(id.getAllapot());   
 
+          if (esely == 1) {
+            id[korulElemLista[db]].setAllapot(false);   
+            console.log("egyezik a");
+          }
+           
+        }
     }
 
     #init(lampa) {

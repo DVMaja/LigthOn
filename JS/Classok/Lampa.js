@@ -9,11 +9,14 @@ class Lampa {
         szuloELEM.append(`<div class="korELEM"></div>`);
         this.korELEM = $(".ideJatekter .korELEM:last-child");
 
-        this.korELEM.on("click", () => {
-            console.log("A kattintást érzékeli")
-            this.#kattintasTrigger();
-        })
-        this.setAllapot(this.#allapot);
+        if (this.#allapot != true) {
+            this.korELEM.on("click", () => {
+                console.log("A kattintást érzékeli")
+                this.#kattintasTrigger();
+            })
+            this.setAllapot(this.#allapot);
+        }
+        
     }
 
     setAllapot(aktAllapot) {
