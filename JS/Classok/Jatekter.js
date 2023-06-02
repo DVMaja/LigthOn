@@ -23,13 +23,16 @@ class Jatekter {
         /* console.log("1. lista: ");
         console.log(this.#allapotLISTA); */
         this.#db;
-
+        
         this.#ellenorzes();
         $(window).on("kapcsolas", (event) => {
             console.log(event.detail);
-            this.#allapotLISTA[event.detail] = true;
+            //this.#allapotLISTA[event.detail] = true;
             //console.log(this.#allapotLISTA[event.detail]);
-            this.#setAllapotLISTA(event.detail);
+            if (event.detail.getAllapot() != true) {
+                this.#setAllapotLISTA(event.detail);
+            }
+            
             //this.#szomszedokKeresese(event.detail);
             this.#ellenorzes();
         })

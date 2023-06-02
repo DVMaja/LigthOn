@@ -9,14 +9,12 @@ class Lampa {
         szuloELEM.append(`<div class="korELEM"></div>`);
         this.korELEM = $(".ideJatekter .korELEM:last-child");
 
-        if (this.#allapot != true) {
-            this.korELEM.on("click", () => {
-                console.log("A kattintást érzékeli")
-                this.#kattintasTrigger();
-            })
-            this.setAllapot(this.#allapot);
-        }
-        
+        this.korELEM.on("click", () => {
+            console.log("A kattintást érzékeli")
+            this.#kattintasTrigger();
+        })
+        this.setAllapot(this.#allapot);
+
     }
 
     setAllapot(aktAllapot) {
@@ -28,7 +26,6 @@ class Lampa {
         if (this.#allapot == true) {
             this.korELEM.css(`background-color`, `darkgreen`);
             this.#allapot = true;
-
         } else {
             this.korELEM.css(`background-color`, `orange`);
             this.allapot = false;
@@ -36,10 +33,10 @@ class Lampa {
     }
 
     getAllapot() {
-        console.log(this.#allapot);
+        //console.log(this.#allapot);
         return this.#allapot;
     }
-    
+
     getId() {
         return this.#id;
     }
